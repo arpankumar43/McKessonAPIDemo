@@ -1,0 +1,8 @@
+Name,OpenTime,CloseTime
+Location A,10:00:00, 13:00:00
+Location B,09:00:00,12:00:00
+Location C,10:00:00,19:00:00
+Location D,19:00:00,19:00:00
+Location E,12:00:00,18:00:00
+Location F,10:00:00,13:00:00
+Location G,10:43:56,13:43:56
