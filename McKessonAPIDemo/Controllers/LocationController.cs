@@ -28,6 +28,13 @@ namespace McKessonAPIDemo.Controllers
             return Ok(availableLocations);
         }
 
+        [HttpGet("GetAllLocation")]
+        public IActionResult GetAllLocations()
+        {
+            var availableLocations = _locationService.GetAllLocations();
+
+            return Ok(availableLocations);
+        }
 
         [HttpPost("AddLocation")]
         public IActionResult CreateLocation([FromBody] Location location)
@@ -39,11 +46,9 @@ namespace McKessonAPIDemo.Controllers
 
             try
             {
-                // Perform any necessary validation or processing on the location object
-                // ...
-
-                // Save the location object to a data store (e.g., database)
-               var result = _locationService.SaveLocation(location);
+                
+                // Save the location object to a csv 
+                var result = _locationService.SaveLocation(location);
 
                 return Ok(result);
             }

@@ -6,5 +6,6 @@ namespace McKessonAPIDemo.Dependencies.Infrastructure
     {
         IEnumerable<Location> GetAvailableLocations(DateTime startTime, DateTime endTime);
         Location SaveLocation(Location location);
+        IEnumerable<Location> GetAllLocations();
     }
 }

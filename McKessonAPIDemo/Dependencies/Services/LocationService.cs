@@ -9,40 +9,43 @@ namespace McKessonAPIDemo.Dependencies.Services
 {
     public class LocationService : ILocationService
     {
-        //private static List<Location> _locations;
         private readonly string _csvFilePath;
         public LocationService(string csvFilePath)
         {
-            //_locations = LoadLocationsFromCsv();
             _csvFilePath = csvFilePath;
         }
 
+        public IEnumerable<Location> GetAllLocations()
+        {
 
+            return ReadLocationsFromCsv();
+        }
         public IEnumerable<Location> GetAvailableLocations(DateTime startTime, DateTime endTime)
         {
             var locations = ReadLocationsFromCsv();
-            return locations.Where(l => IsLocationAvailable(l, startTime, endTime));
+            return FilterLocations(locations, startTime, endTime);
         }
 
+        static IEnumerable<Location> FilterLocations(IEnumerable<Location> locations, DateTime targetStartTime, DateTime targetEndTime)
+        {
+            return locations.Where(location =>
+            {
+                DateTime openTime = DateTime.ParseExact(location.OpenTime.ToLongTimeString(), "HH:mm:ss", CultureInfo.InvariantCulture);
+                DateTime closeTime = DateTime.ParseExact(location.CloseTime.ToLongTimeString(), "HH:mm:ss", CultureInfo.InvariantCulture);
+
+                return openTime <= targetStartTime && closeTime >= targetEndTime;
+            });
+        }
         private bool IsLocationAvailable(Location location, DateTime startTime, DateTime endTime)
         {
+
             var openingTime = location.OpenTime;
             var closingTime = location.CloseTime;
-            //var openingTime = location.OpenTime.TimeOfDay;
-            //var closingTime = location.CloseTime.TimeOfDay;
 
-            //// Check if the location's opening time is between the start and end times
-            //var openingTimeInRange = openingTime >= startTime.TimeOfDay && openingTime < endTime.TimeOfDay;
+            // Check if the location's opening and closing times are between 10 AM and 1 PM (inclusive)
+            return (openingTime >= startTime && openingTime < endTime) &&
+                   (closingTime > startTime && closingTime <= endTime);
 
-            //// Check if the location's closing time is between the start and end times
-            //var closingTimeInRange = closingTime > startTime.TimeOfDay && closingTime <= endTime.TimeOfDay;
-
-            //// Check if the location's opening and closing times overlap with the start and end times
-            //var overlappingTimes = openingTime < startTime.TimeOfDay && closingTime > endTime.TimeOfDay;
-            return (openingTime >= startTime && openingTime < endTime) ||
-          (closingTime > startTime && closingTime <= endTime);
-            //return openingTime >= startTime && closingTime <= endTime;
-            //return openingTimeInRange || closingTimeInRange || overlappingTimes;
         }
 
         private IEnumerable<Location> ReadLocationsFromCsv()
@@ -70,7 +73,6 @@ namespace McKessonAPIDemo.Dependencies.Services
 
             return locations;
         }
-
 
         public Location SaveLocation(Location location)
         {
@@ -110,5 +112,6 @@ namespace McKessonAPIDemo.Dependencies.Services
             }
         }
 
+       
     }
 }

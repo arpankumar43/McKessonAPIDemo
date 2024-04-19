@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\tejal\\OneDrive\\Documents\\DemoProjects\\McKessonAPIDemo\\McKessonAPIDemo\\McKessonAPIDemo.csproj": {}
+    "C:\\Users\\tejal\\OneDrive\\Documents\\DemoProjects\\WebApiBackend\\McKessonAPIDemo\\McKessonAPIDemo\\McKessonAPIDemo.csproj": {}
   },
   "projects": {
-    "C:\\Users\\tejal\\OneDrive\\Documents\\DemoProjects\\McKessonAPIDemo\\McKessonAPIDemo\\McKessonAPIDemo.csproj": {
+    "C:\\Users\\tejal\\OneDrive\\Documents\\DemoProjects\\WebApiBackend\\McKessonAPIDemo\\McKessonAPIDemo\\McKessonAPIDemo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\tejal\\OneDrive\\Documents\\DemoProjects\\McKessonAPIDemo\\McKessonAPIDemo\\McKessonAPIDemo.csproj",
+        "projectUniqueName": "C:\\Users\\tejal\\OneDrive\\Documents\\DemoProjects\\WebApiBackend\\McKessonAPIDemo\\McKessonAPIDemo\\McKessonAPIDemo.csproj",
         "projectName": "McKessonAPIDemo",
-        "projectPath": "C:\\Users\\tejal\\OneDrive\\Documents\\DemoProjects\\McKessonAPIDemo\\McKessonAPIDemo\\McKessonAPIDemo.csproj",
+        "projectPath": "C:\\Users\\tejal\\OneDrive\\Documents\\DemoProjects\\WebApiBackend\\McKessonAPIDemo\\McKessonAPIDemo\\McKessonAPIDemo.csproj",
         "packagesPath": "C:\\Users\\tejal\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\tejal\\OneDrive\\Documents\\DemoProjects\\McKessonAPIDemo\\McKessonAPIDemo\\obj\\",
+        "outputPath": "C:\\Users\\tejal\\OneDrive\\Documents\\DemoProjects\\WebApiBackend\\McKessonAPIDemo\\McKessonAPIDemo\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\tejal\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.AspNetCore.Cors;
 
 namespace DIinCore
 {
@@ -22,9 +21,10 @@ namespace DIinCore
             // Registering a singleton service
 
             // Other dependency injections can be added here using AddTransient or AddScoped
-           
-            services.AddMvc();
+            // services.AddTransient<ICategoryRepository, CategoryRepository>();
+            // services.AddScoped<ICategoryRepository, CategoryRepository>();
 
+            services.AddMvc();
             services.AddCors(options =>
             {
                 options.AddDefaultPolicy(builder =>
@@ -34,25 +34,21 @@ namespace DIinCore
                            .AllowAnyMethod(); // Allow any method
                 });
             });
-
             services.AddControllers();
             services.AddSingleton<ILocationService>(provider =>
-            new LocationService(Path.Combine(Directory.GetCurrentDirectory(), "Data", "locationData2.csv")));
-
+                                 new LocationService(Path.Combine(Directory.GetCurrentDirectory(), "Data", "locationData2.csv")));
+           
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
-
-            app.UseCors(); // Enable CORS
-            app.UseRouting();
-
-
+            //app.UseHttpsRedirection();
+            //app.UseRouting();
+            //app.UseCors(); // Use CORS middleware here
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
